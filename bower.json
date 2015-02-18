@@ -1,0 +1,14 @@
+{
+  "name": "JamgleCoreLibrary",
+  "version": "0.0.0",
+  "main": "dist/JamgleCoreLibrary.min.js",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.3"
+  }
+}
