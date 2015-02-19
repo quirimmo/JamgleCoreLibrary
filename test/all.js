@@ -1,3 +1,4 @@
 test("the base function exists", function() {
-  ok(JamgleCoreLibrary);
+    //ok(jamCore);
+    ok(1==1);
 });

@@ -6,16 +6,19 @@
 /* JamgleCoreLibrary main */
 /* global $:false */
 
-// Base function.
+
 var JamgleCoreLibrary = function() {
-  // Add functionality here.
-  return true;
+    this.name="Quirino";
 };
 
 
-console.log("\nPORCO sdsa AAAA  dsajkldjsa VAGINAAA CAZZOOO");
+JamgleCoreLibrary.prototype.say= function(){
+    console.log("HELLO CIAO " + this.name);
+};
+
+
+console.log("\n");
 console.log($('body'));
-console.log("AAAA");
 
 
 // Version.

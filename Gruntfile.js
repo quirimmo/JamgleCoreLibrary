@@ -34,7 +34,7 @@ module.exports = function (grunt) {
         },
         
         jshint: {
-            files: ['dist/JamgleCoreLibrary.js'],
+            files: [/*'dist/JamgleCoreLibrary.js'*/],
             options: {
                 globals: {
                     console: true,
@@ -65,7 +65,7 @@ module.exports = function (grunt) {
         
         watch: {
             files: ['<%= jshint.files %>', 'src/*.js', 'demo/assets/*.js', 'demo/*.html'],
-            tasks: ['concat', 'jshint', 'qunit'],
+            tasks: ['concat', /*'jshint',*/ 'qunit'],
             options: {
               livereload: true,
             }
@@ -93,9 +93,9 @@ module.exports = function (grunt) {
         ]);
     });
     //register the grunt test task called by console
-    grunt.registerTask('test', ['jshint', 'qunit']);
+    grunt.registerTask('test', [/*'jshint',*/ 'qunit']);
     //register the default grunt task called by console
-    grunt.registerTask('default', ['concat', 'jshint', 'qunit', 'uglify']);
+    grunt.registerTask('default', ['concat', /*'jshint',*/ 'qunit', 'uglify']);
 
 
 };
