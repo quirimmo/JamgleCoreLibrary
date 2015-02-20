@@ -15,7 +15,8 @@ var JamgleCoreLibrary = function() {
 JamgleCoreLibrary.prototype.connect= function(){
     console.log("Connecting to REST Web Service");
     $.ajax({
-        url: "http://localhost:8000/resources",
+        url: "http://localhost:8080/MavenGitResteasyWeb-1.0-SNAPSHOT/rest/website",
+        crossDomain: true,
         dataType: "json"
     }).then(function(data) {
         console.log(data);
