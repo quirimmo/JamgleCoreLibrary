@@ -58,7 +58,22 @@ RESTConnector.prototype.put= function(resourceAPI, jsObject){
     return this.connect(REST_SERVICE_BASE_PATH + resourceAPI, "PUT", jsonObject);
 };
 
+var AbstractModel = function() {
+    console.log("Initializing Abstract Model");
+    this.resourceName;
+};
 
+
+AbstractModel.prototype.setupModelProperties= function(resourceName){
+    this.resourceName= resourceName;
+}
+
+var WebsiteModel = function() {
+    console.log("Initializing Website Model");
+    this.setupModelProperties("website");
+};
+
+WebsiteModel.prototype = new AbstractModel();
 
 /* JamgleCoreLibrary main */
 /* global $:false */
@@ -81,7 +96,21 @@ JamgleCoreLibrary.VERSION = '0.0.1';
 root.JamgleCoreLibrary = JamgleCoreLibrary;
 
 
+
+
 var jamCoreLib = new JamgleCoreLibrary();
+
+
+
+var resultPromise= jamCoreLib.RESTConnector.get("website", 1);
+resultPromise.then(function( data, textStatus, jqXHR ) {
+    var websiteModel= new WebsiteModel();
+    websiteModel= data.data[0];
+    console.log(websiteModel.author);
+}, function() {
+    console.log( "Result SINGLE GET Promise Failed!");
+});
+
 
 
 

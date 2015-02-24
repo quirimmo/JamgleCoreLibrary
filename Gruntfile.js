@@ -11,7 +11,8 @@ module.exports = function (grunt) {
             dist: {
                 src: [
                     'src/_intro.js',
-                    'src/RESTConnector.js',
+                    'src/service/RESTConnector.js',
+                    'src/model/*.js',
                     'src/main.js',
                     'src/_outro.js'
                 ],
@@ -65,7 +66,7 @@ module.exports = function (grunt) {
         },
         
         watch: {
-            files: ['<%= jshint.files %>', 'src/*.js', 'demo/assets/*.js', 'demo/*.html'],
+            files: ['<%= jshint.files %>', 'src/*/*.js', 'src/*.js', 'demo/assets/*.js', 'demo/*.html'],
             tasks: ['concat', /*'jshint',*/ 'qunit'],
             options: {
               livereload: true,

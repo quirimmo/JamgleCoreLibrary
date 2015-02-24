@@ -52,4 +52,3 @@ RESTConnector.prototype.put= function(resourceAPI, jsObject){
     var jsonObject= JSON.stringify(jsObject);
     return this.connect(REST_SERVICE_BASE_PATH + resourceAPI, "PUT", jsonObject);
 };
-

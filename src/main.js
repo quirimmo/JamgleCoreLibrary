@@ -19,7 +19,21 @@ JamgleCoreLibrary.VERSION = '0.0.1';
 root.JamgleCoreLibrary = JamgleCoreLibrary;
 
 
+
+
 var jamCoreLib = new JamgleCoreLibrary();
+
+
+
+var resultPromise= jamCoreLib.RESTConnector.get("website", 1);
+resultPromise.then(function( data, textStatus, jqXHR ) {
+    var websiteModel= new WebsiteModel();
+    websiteModel= data.data[0];
+    console.log(websiteModel.author);
+}, function() {
+    console.log( "Result SINGLE GET Promise Failed!");
+});
+
 
 
 
