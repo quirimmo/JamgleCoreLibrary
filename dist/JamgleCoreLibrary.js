@@ -34,7 +34,7 @@ RESTConnector.prototype.getRequestID= function(idItem){
         idURL= "?id=" + idItem;
     }
     return idURL;
-}
+};
 
 
 
@@ -60,41 +60,77 @@ RESTConnector.prototype.put= function(resourceAPI, jsObject){
 
 var AbstractModel = function() {
     console.log("Initializing Abstract Model");
+};
+
+
+var WebsiteModel = function() {
+    console.log("Initializing Website Model");
+};
+
+WebsiteModel.prototype = new AbstractModel();
+
+var AbstractModelDAO = function() {
+    console.log("Initializing Abstract Model DAO");
     this.resourceName;
 };
 
 
-AbstractModel.prototype.setupModelProperties= function(resourceName){
+AbstractModelDAO.prototype.setupResourceProperties= function(resourceName){
     this.resourceName= resourceName;
-}
-
-var WebsiteModel = function() {
-    console.log("Initializing Website Model");
-    this.setupModelProperties("website");
 };
 
-WebsiteModel.prototype = new AbstractModel();
+
+AbstractModelDAO.prototype.find= function(modelId){
+    var resultPromise= jamCoreLib.RESTConnector.get(this.resourceName, modelId);
+    return resultPromise;
+};
+
+
+AbstractModelDAO.prototype.findAll= function(){
+    var resultPromise= jamCoreLib.RESTConnector.get(this.resourceName);
+    return resultPromise;
+};
+
+
+AbstractModelDAO.prototype.delete= function(modelId){
+    var resultPromise= jamCoreLib.RESTConnector.delete(this.resourceName, modelId);
+    return resultPromise;
+};
+
+
+AbstractModelDAO.prototype.update= function(jsObject){
+    var resultPromise= jamCoreLib.RESTConnector.post(this.resourceName, jsObject);
+    return resultPromise;
+};
+
+
+AbstractModelDAO.prototype.save= function(jsObject){
+    var resultPromise= jamCoreLib.RESTConnector.put(this.resourceName, jsObject);
+    return resultPromise;
+};
+
+var WebsiteDAO = function() {
+    console.log("Initializing Website DAO");
+    this.setupResourceProperties("website");
+};
+
+WebsiteDAO.prototype = new AbstractModelDAO();
 
 /* JamgleCoreLibrary main */
 /* global $:false */
 
 
 var JamgleCoreLibrary = function() {
-    this.name="Quirino";
+    
     this.RESTConnector= new RESTConnector();
-};
-
-JamgleCoreLibrary.prototype.say= function(){
-    console.log("CIAO " + this.name);
+    
 };
 
 // Version.
 JamgleCoreLibrary.VERSION = '0.0.1';
 
-
 // Export to the root, which is probably `window`.
 root.JamgleCoreLibrary = JamgleCoreLibrary;
-
 
 
 
@@ -102,6 +138,68 @@ var jamCoreLib = new JamgleCoreLibrary();
 
 
 
+
+
+
+
+
+
+
+/*
+
+var testObj= {
+    author: "PIPPA PEGGGGGGGGGGGG", 
+    creationDate: 1424708822430,
+    description: "djsad alkdj lakjdasljlljaldljdsaljda",
+    id: 12,
+    name: "Quirino's WebSite",
+    url: "www.quirino.it"
+};
+
+
+
+
+
+var webDAO = new WebsiteDAO();
+var resultPromise= webDAO.save(testObj);
+resultPromise.then(function( data, textStatus, jqXHR ) {
+    console.log(data);
+}, function() {
+    console.log( "Result SAVE Promise Failed!");
+});
+
+var resultPromise= webDAO.delete(1);
+resultPromise.then(function( data, textStatus, jqXHR ) {
+    console.log(data);
+}, function() {
+    console.log( "Result DELETE Promise Failed!");
+});
+*/
+
+/*
+var resultPromise= webDAO.findAll();
+resultPromise.then(function( data, textStatus, jqXHR ) {
+    console.log(data.data);
+}, function() {
+    console.log( "Result SINGLE GET Promise Failed!");
+});
+*/
+
+
+/*
+var resultPromise= webDAO.find(1);
+resultPromise.then(function( data, textStatus, jqXHR ) {
+    var websiteModel= new WebsiteModel();
+    websiteModel= data.data[0];
+    console.log(websiteModel.description);
+}, function() {
+    console.log( "Result SINGLE GET Promise Failed!");
+});
+*/
+
+
+
+/*
 var resultPromise= jamCoreLib.RESTConnector.get("website", 1);
 resultPromise.then(function( data, textStatus, jqXHR ) {
     var websiteModel= new WebsiteModel();
@@ -110,7 +208,7 @@ resultPromise.then(function( data, textStatus, jqXHR ) {
 }, function() {
     console.log( "Result SINGLE GET Promise Failed!");
 });
-
+*/
 
 
 

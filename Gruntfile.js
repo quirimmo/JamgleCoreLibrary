@@ -13,6 +13,7 @@ module.exports = function (grunt) {
                     'src/_intro.js',
                     'src/service/RESTConnector.js',
                     'src/model/*.js',
+                    'src/dao/*.js',
                     'src/main.js',
                     'src/_outro.js'
                 ],

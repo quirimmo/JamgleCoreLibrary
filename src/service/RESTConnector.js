@@ -29,7 +29,7 @@ RESTConnector.prototype.getRequestID= function(idItem){
         idURL= "?id=" + idItem;
     }
     return idURL;
-}
+};
 
 
 
