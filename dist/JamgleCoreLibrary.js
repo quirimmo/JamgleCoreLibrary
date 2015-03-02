@@ -69,6 +69,21 @@ var WebsiteModel = function() {
 
 WebsiteModel.prototype = new AbstractModel();
 
+
+WebsiteModel.prototype.buildModelInstance= function(){
+    
+    var modelInstance= {
+        author: "PIPPA PEGGGGGGGGGGGG", 
+        creationDate: 1424708822430,
+        description: "djsad alkdj lakjdasljlljaldljdsaljda",
+        id: 12,
+        name: "Quirino's WebSite",
+        url: "www.quirino.it"
+    };
+    
+    return modelInstance;
+}
+
 var AbstractModelDAO = function() {
     console.log("Initializing Abstract Model DAO");
     this.resourceName;
@@ -137,7 +152,9 @@ root.JamgleCoreLibrary = JamgleCoreLibrary;
 var jamCoreLib = new JamgleCoreLibrary();
 
 
-
+var websiteModel= new WebsiteModel();
+var websiteModelObj= websiteModel.buildModelInstance();
+console.log(websiteModelObj.description);
 
 
 

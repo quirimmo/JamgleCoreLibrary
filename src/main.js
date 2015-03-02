@@ -19,7 +19,9 @@ root.JamgleCoreLibrary = JamgleCoreLibrary;
 var jamCoreLib = new JamgleCoreLibrary();
 
 
-
+var websiteModel= new WebsiteModel();
+var websiteModelObj= websiteModel.buildModelInstance("PIPPA PEGGGGGGGGGGGG", 1424708822430, "djsad alkdj lakjdasljlljaldljdsaljda", 12, "Quirino's Website", "www.quirino.it");
+console.log(websiteModelObj.description);
 
 
 
