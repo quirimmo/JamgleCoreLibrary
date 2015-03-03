@@ -63,6 +63,17 @@ var AbstractModel = function() {
 };
 
 
+
+/**
+Abstract Method in order to create an instance of the model. You need to implement this method in your Concrete Model Implementation
+**/
+AbstractModel.prototype.buildModelInstance= function(data){
+    console.log("Abstract Buil Model Method: You need to implement the right one in your concrete model implementation");
+    var modelInstance= {
+    };
+    return modelInstance;
+}
+
 var WebsiteModel = function() {
     console.log("Initializing Website Model");
 };
@@ -70,15 +81,37 @@ var WebsiteModel = function() {
 WebsiteModel.prototype = new AbstractModel();
 
 
-WebsiteModel.prototype.buildModelInstance= function(){
+/**
+Method used in order to instance a model object, passing the right parameters when calling the method 
+WebsiteModel.prototype.buildModelInstance= function(author, creationDate, description, id, name, url){
     
     var modelInstance= {
-        author: "PIPPA PEGGGGGGGGGGGG", 
-        creationDate: 1424708822430,
-        description: "djsad alkdj lakjdasljlljaldljdsaljda",
-        id: 12,
-        name: "Quirino's WebSite",
-        url: "www.quirino.it"
+        author: author, 
+        creationDate: creationDate,
+        description: description,
+        id: id,
+        name: name,
+        url: url
+    };
+    
+    return modelInstance;
+    
+}
+*/
+
+
+/**
+Method used in order to instance a model object, passing the right data parameters when calling the method
+**/
+WebsiteModel.prototype.buildModelInstance= function(data){
+    
+    var modelInstance= {
+        id: data.id,
+        name: data.name,
+        description: data.description,
+        creationDate: data.creationDate,
+        author: data.author, 
+        url: data.url
     };
     
     return modelInstance;
@@ -152,13 +185,34 @@ root.JamgleCoreLibrary = JamgleCoreLibrary;
 var jamCoreLib = new JamgleCoreLibrary();
 
 
-var websiteModel= new WebsiteModel();
-var websiteModelObj= websiteModel.buildModelInstance();
-console.log(websiteModelObj.description);
+/*
 
+var webDAO = new WebsiteDAO();
+var resultPromise= webDAO.findAll();
+resultPromise.then(function( data, textStatus, jqXHR ) {
+    for(var i=0; i<data.data.length; i++){
+        var websiteModel= new WebsiteModel();
+        var websiteModelObj= websiteModel.buildModelInstance(data.data[i]);
+        console.log(websiteModelObj);
+    }
+}, function() {
+    console.log( "Result SINGLE GET Promise Failed!");
+});
 
+*/
 
+/*
 
+var webDAO = new WebsiteDAO();
+var resultPromise= webDAO.find(1);
+resultPromise.then(function( data, textStatus, jqXHR ) {
+    var websiteModel= new WebsiteModel();
+    var websiteModelObj= websiteModel.buildModelInstance(data.data[0]);
+}, function() {
+    console.log( "Result SINGLE GET Promise Failed!");
+});
+
+*/
 
 
 

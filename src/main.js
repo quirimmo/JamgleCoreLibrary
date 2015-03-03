@@ -19,13 +19,34 @@ root.JamgleCoreLibrary = JamgleCoreLibrary;
 var jamCoreLib = new JamgleCoreLibrary();
 
 
-var websiteModel= new WebsiteModel();
-var websiteModelObj= websiteModel.buildModelInstance("PIPPA PEGGGGGGGGGGGG", 1424708822430, "djsad alkdj lakjdasljlljaldljdsaljda", 12, "Quirino's Website", "www.quirino.it");
-console.log(websiteModelObj.description);
+/*
 
+var webDAO = new WebsiteDAO();
+var resultPromise= webDAO.findAll();
+resultPromise.then(function( data, textStatus, jqXHR ) {
+    for(var i=0; i<data.data.length; i++){
+        var websiteModel= new WebsiteModel();
+        var websiteModelObj= websiteModel.buildModelInstance(data.data[i]);
+        console.log(websiteModelObj);
+    }
+}, function() {
+    console.log( "Result SINGLE GET Promise Failed!");
+});
 
+*/
 
+/*
 
+var webDAO = new WebsiteDAO();
+var resultPromise= webDAO.find(1);
+resultPromise.then(function( data, textStatus, jqXHR ) {
+    var websiteModel= new WebsiteModel();
+    var websiteModelObj= websiteModel.buildModelInstance(data.data[0]);
+}, function() {
+    console.log( "Result SINGLE GET Promise Failed!");
+});
+
+*/
 
 
 
